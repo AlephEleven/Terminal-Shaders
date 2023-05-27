@@ -1,6 +1,6 @@
 # Terminal Shaders
 
-Text-based shaders library for the command-line, written in C. Heavily based on the Shadertoy library.
+Text-based shaders library for the command-line, written in C. Heavily based on the [Shadertoy](https://www.shadertoy.com/) library.
 
 ## Table of Contents
 * [Features](#features)
