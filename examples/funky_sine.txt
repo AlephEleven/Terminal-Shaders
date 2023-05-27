@@ -1,0 +1,28 @@
+void mainImage(vec2 Coord){
+    INIT_VEC2(uv, 0, 0);
+    vec2_divide(&Coord, &Resolution, &uv);
+    vec2_ssub(&uv, 0.5);
+    vec2_smult(&uv, 2);
+
+    float dist = vec2_length(&uv);
+    
+    INIT_VEC3(a, 0.5, 0.5, 0.5);
+    INIT_VEC3(b, 0.5, 0.5, 0.5);
+    INIT_VEC3(c, 1.0, 1.0, 1.0);
+    INIT_VEC3(d, 0.263, 0.416, 0.557);
+
+    INIT_VEC3(col, 0.0, 0.0, 0.0);
+
+    palette(dist + Time, &a, &b, &c, &d, &col);
+
+    dist = sinf(dist*8.0 + Time)/8.0;
+    dist = fabs(dist);
+
+    dist = 0.02 / dist;
+
+    vec3_smult(&col, dist);
+    
+    INIT_VEC3(Color, col.x, col.y, col.z);
+    
+    COLOR_vec3(PIXEL_ASCII, Color);
+}

@@ -1,0 +1,47 @@
+
+//Circle
+
+float makeCircle(vec2 * vec, float radius){
+    float d = vec2_length(vec) - radius;
+
+    return d;
+}
+
+void mainImage(vec2 Coord){
+    INIT_VEC2(uv, 0, 0);
+    vec2_divide(&Coord, &Resolution, &uv);
+    vec2_ssub(&uv, 0.5);
+    vec2_smult(&uv, 2);
+
+    float d = makeCircle(&uv, 0.5);
+    
+    INIT_VEC3(Color, d, d, d);
+    COLOR_vec3(PIXEL_ASCII, Color);
+}
+
+
+//Square
+float makeSquare(vec2 * vec, float bounds){
+    INIT_VEC2(vec_abs, vec->x, vec->y);
+    vec2_abs(&vec_abs);
+
+
+    float dist = vec2_max(&vec_abs) - bounds;
+
+    return dist;
+}
+
+void mainImage(vec2 Coord){
+    INIT_VEC2(uv, 0.0, 0.0);
+
+    vec2_divide(&Coord, &Resolution, &uv);
+    vec2_smult(&uv, 2.0);
+    vec2_ssub(&uv, 1.0);
+
+    float dist = makeSquare(&uv, 0.5);
+
+    
+    INIT_VEC3(Color, dist, dist, dist);
+    
+    COLOR_vec3(PIXEL_ASCII, Color);
+}
